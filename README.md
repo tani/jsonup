@@ -1,4 +1,4 @@
-# jsonup
+# jsonup [![jsonup](https://img.shields.io/npm/v/jsonup)](https://npmjs.com/package/jsonup)
 
 This is a zero dependency compile-time json-parser written in TypeScript.
 
