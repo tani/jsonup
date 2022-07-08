@@ -4,7 +4,7 @@
   "description": "A compile-time JSON parser",
   "main": "mod.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc mod.ts && tsc --declaration mod.ts"
   },
   "repository": {
     "type": "git",

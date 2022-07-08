@@ -1,4 +1,4 @@
-// (c) 2022 TANIGUCHI Masaya. https://git.io/mit-license
+/*! (c) 2022 TANIGUCHI Masaya. https://git.io/mit-license */
 declare type StringifyArgs = Parameters<typeof JSON.stringify>;
 declare type ParseArgs = Parameters<typeof JSON.parse>;
 export declare class JSONUP {
@@ -12,9 +12,9 @@ declare type JsonStringKeyInner<T, U extends string> = Trim<T> extends `\\"${inf
 declare type JsonStringKey<T> = Trim<T> extends `"${infer S}` ? JsonStringKeyInner<S, ''> : never;
 declare type JsonStringValueInner<T, U extends string> = Trim<T> extends `\\"${infer S}` ? JsonStringValueInner<S, `${U}"`> : Trim<T> extends `"${infer S}` ? [string, Trim<S>] : Trim<T> extends `${infer L}${infer R}` ? JsonStringValueInner<R, `${U}${L}`> : never;
 declare type JsonStringValue<T> = Trim<T> extends `"${infer S}` ? JsonStringValueInner<S, ''> : never;
-declare type JsonNumber<T> = Trim<T> extends `${infer _ extends number}` ? [number, ''] : Trim<T> extends `${infer _ extends number}]${infer R}` ? [number, Trim<`]${R}`>] : Trim<T> extends `${infer _ extends number}}${infer R}` ? [number, Trim<`}${R}`>] : Trim<T> extends `${infer _ extends number},${infer R}` ? [number, Trim<`,${R}`>] : never;
-declare type JsonNull<T> = Trim<T> extends `${infer _ extends null}` ? [null, ''] : Trim<T> extends `${infer _ extends null}]${infer R}` ? [null, Trim<`]${R}`>] : Trim<T> extends `${infer _ extends null}}${infer R}` ? [null, Trim<`}${R}`>] : Trim<T> extends `${infer _ extends null},${infer R}` ? [null, Trim<`,${R}`>] : never;
-declare type JsonBoolean<T> = Trim<T> extends `${infer _ extends boolean}` ? [boolean, ''] : Trim<T> extends `${infer _ extends boolean}]${infer R}` ? [boolean, Trim<`]${R}`>] : Trim<T> extends `${infer _ extends boolean}}${infer R}` ? [boolean, Trim<`}${R}`>] : Trim<T> extends `${infer _ extends boolean},${infer R}` ? [boolean, Trim<`,${R}`>] : never;
+declare type JsonNumber<T> = Trim<T> extends `${number}` ? [number, ''] : Trim<T> extends `${number}]${infer R}` ? [number, Trim<`]${R}`>] : Trim<T> extends `${number}}${infer R}` ? [number, Trim<`}${R}`>] : Trim<T> extends `${number},${infer R}` ? [number, Trim<`,${R}`>] : never;
+declare type JsonNull<T> = Trim<T> extends `${null}` ? [null, ''] : Trim<T> extends `${null}]${infer R}` ? [null, Trim<`]${R}`>] : Trim<T> extends `${null}}${infer R}` ? [null, Trim<`}${R}`>] : Trim<T> extends `${null},${infer R}` ? [null, Trim<`,${R}`>] : never;
+declare type JsonBoolean<T> = Trim<T> extends `${boolean}` ? [boolean, ''] : Trim<T> extends `${boolean}]${infer R}` ? [boolean, Trim<`]${R}`>] : Trim<T> extends `${boolean}}${infer R}` ? [boolean, Trim<`}${R}`>] : Trim<T> extends `${boolean},${infer R}` ? [boolean, Trim<`,${R}`>] : never;
 declare type JsonArrayInner<T, L> = JsonValue<T> extends [infer V, `,${infer R}`] ? JsonArrayInner<R, V | L> : JsonValue<T> extends [infer V, `]${infer R}`] ? [(V | L)[], Trim<R>] : never;
 declare type JsonArray<T> = Trim<T> extends `[]${infer R}` ? [[], Trim<R>] : Trim<T> extends `[${infer S}` ? JsonArrayInner<S, never> : never;
 declare type JsonKeyValue<T> = JsonStringKey<T> extends [infer K extends string, `:${infer R}`] ? (JsonValue<R> extends [infer V, infer Q] ? [{

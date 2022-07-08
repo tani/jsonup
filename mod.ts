@@ -1,4 +1,4 @@
-// (c) 2022 TANIGUCHI Masaya. https://git.io/mit-license
+/*! (c) 2022 TANIGUCHI Masaya. https://git.io/mit-license */ 
 type StringifyArgs = Parameters<typeof JSON.stringify>
 type ParseArgs = Parameters<typeof JSON.parse>
 
@@ -39,24 +39,24 @@ type JsonStringValue<T> =
   Trim<T> extends `"${infer S}` ? JsonStringValueInner<S, ''> : never;
 
 type JsonNumber<T> =
-  Trim<T> extends `${infer _ extends number}` ? [number, ''] :
-  Trim<T> extends `${infer _ extends number}]${infer R}` ? [number, Trim<`]${R}`>] :
-  Trim<T> extends `${infer _ extends number}}${infer R}` ? [number, Trim<`}${R}`>] :
-  Trim<T> extends `${infer _ extends number},${infer R}` ? [number, Trim<`,${R}`>] :
+  Trim<T> extends `${number}` ? [number, ''] :
+  Trim<T> extends `${number}]${infer R}` ? [number, Trim<`]${R}`>] :
+  Trim<T> extends `${number}}${infer R}` ? [number, Trim<`}${R}`>] :
+  Trim<T> extends `${number},${infer R}` ? [number, Trim<`,${R}`>] :
   never;
 
 type JsonNull<T> =
-  Trim<T> extends `${infer _ extends null}` ? [null, ''] :
-  Trim<T> extends `${infer _ extends null}]${infer R}` ? [null, Trim<`]${R}`>] :
-  Trim<T> extends `${infer _ extends null}}${infer R}` ? [null, Trim<`}${R}`>] :
-  Trim<T> extends `${infer _ extends null},${infer R}` ? [null, Trim<`,${R}`>] :
+  Trim<T> extends `${null}` ? [null, ''] :
+  Trim<T> extends `${null}]${infer R}` ? [null, Trim<`]${R}`>] :
+  Trim<T> extends `${null}}${infer R}` ? [null, Trim<`}${R}`>] :
+  Trim<T> extends `${null},${infer R}` ? [null, Trim<`,${R}`>] :
   never;
 
 type JsonBoolean<T> =
-  Trim<T> extends `${infer _ extends boolean}` ? [boolean, ''] :
-  Trim<T> extends `${infer _ extends boolean}]${infer R}` ? [boolean, Trim<`]${R}`>] :
-  Trim<T> extends `${infer _ extends boolean}}${infer R}` ? [boolean, Trim<`}${R}`>] :
-  Trim<T> extends `${infer _ extends boolean},${infer R}` ? [boolean, Trim<`,${R}`>] :
+  Trim<T> extends `${boolean}` ? [boolean, ''] :
+  Trim<T> extends `${boolean}]${infer R}` ? [boolean, Trim<`]${R}`>] :
+  Trim<T> extends `${boolean}}${infer R}` ? [boolean, Trim<`}${R}`>] :
+  Trim<T> extends `${boolean},${infer R}` ? [boolean, Trim<`,${R}`>] :
   never;
 
 type JsonArrayInner<T, L> =
