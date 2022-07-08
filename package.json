@@ -1,0 +1,28 @@
+{
+  "name": "jsonup",
+  "version": "0.1.0",
+  "description": "A compile-time JSON parser",
+  "main": "mod.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tani/jsonup.git"
+  },
+  "keywords": [
+    "JSON",
+    "json",
+    "parser",
+    "typescript"
+  ],
+  "author": "TANIGUCHI Masaya",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tani/jsonup/issues"
+  },
+  "homepage": "https://github.com/tani/jsonup#readme",
+  "devDependencies": {
+    "typescript": "^4.7.4"
+  }
+}

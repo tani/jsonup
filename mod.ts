@@ -1,4 +1,17 @@
-export type JSON<T> = JsonValue<T> extends [infer L, ''] ? L : never;
+// (c) 2022 TANIGUCHI Masaya. https://git.io/mit-license
+type StringifyArgs = Parameters<typeof JSON.stringify>
+type ParseArgs = Parameters<typeof JSON.parse>
+
+export class JSONUP {
+  static parse<T extends string>(string: T, reviver?: ParseArgs[1]): ObjectLike<T> {
+    return JSON.parse(string, reviver)
+  }
+  static stringify<T extends string>(object: ObjectLike<T>, replacer?: StringifyArgs[1], space?: StringifyArgs[2]): T {
+    return JSON.stringify(object, replacer, space) as T
+  }
+}
+
+export type ObjectLike<T> = JsonValue<T> extends [infer L, ''] ? L : never
 
 type Trim<T> =
   T extends `${' ' | ' \t' | '\n' | '\r'}${infer S}` ? Trim<S> :
