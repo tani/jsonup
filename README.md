@@ -16,7 +16,7 @@ type Obj = ObjectLike<Str> // Type: `{ name: string }`
  * JSONUP.parse infers the type from a given object.
  * The type parameter is optional.
  */
-// Type: `{ name: string }` the given record type
+// Type: `{ name: string }` the inferred record type
 // Value: `{ name: "jsonup" }` the generated object
 let obj = JSONUP.parse(src) 
     obj = JSONUP.parse<Obj>(src)
@@ -24,7 +24,7 @@ let obj = JSONUP.parse(src)
 /**
  * JSONUP.stringify guarantees the semantic equality between 
  * the generated string and the given literal type. 
- * the type parameter is required (maybe).
+ * The type parameter is required (maybe).
  */
 // Type: `'{ "name": "jsonup" }'` the given literal type
 // Value: `'{ "name": "jsonup" }'` the generated string
