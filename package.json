@@ -3,8 +3,9 @@
   "version": "0.1.1",
   "description": "A compile-time JSON parser",
   "main": "mod.js",
+  "types": "mod.d.ts",
   "scripts": {
-    "build": "tsc mod.ts && tsc --declaration mod.ts"
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
