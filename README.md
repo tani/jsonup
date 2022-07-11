@@ -5,9 +5,10 @@ This is a zero dependency compile-time JSON parser written in TypeScript.
 ## Usage
 
 ```typescript
-import { JSONUP, ObjectLike } from 'jsonup'
+import { JSONUP, ObjectLike } from 'jsonup' // Node
+import { JSONUP, ObjectLike } from 'https://esm.sh/jsonup' // Deno
 
-const src = `{ "name": "jsonup" }` as const
+const src = `{ "name": "jsonup" }`
 
 type Str = typeof src      // Type: `'{ "name": "jsonup" }'`
 type Obj = ObjectLike<Str> // Type: `{ name: string }`
@@ -19,7 +20,7 @@ type Obj = ObjectLike<Str> // Type: `{ name: string }`
 // Type: `{ name: string }` the inferred record type
 // Value: `{ name: "jsonup" }` the generated object
 let obj = JSONUP.parse(src) 
-    obj = JSONUP.parse<Obj>(src)
+let obj = JSONUP.parse<Obj>(src)
 
 /**
  * JSONUP.stringify guarantees the semantic equality between 
